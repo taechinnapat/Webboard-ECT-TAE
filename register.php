@@ -15,6 +15,16 @@ header("location:index.php");
     <title>Register</title>
 </head>
 <body>
+<script>
+        function OnBlurPwd(){
+            let pwd=document.getElementById("pwd");
+            let pwd2=document.getElementById("pwd2");
+            if(pwd.value!==pwd2.value){
+                alert("รหัสผ่านทั้งสองช่องไม่ตรงกัน");
+                pwd2.value="";            
+            }
+        }
+    </script>
     <div class="container">
         <h1 style="text-align: center;" class="m-3">Webboard KakKak</h1>
         <?php include "nav.php" ?>
@@ -38,19 +48,25 @@ header("location:index.php");
                     <div class="card-body">
                         <form action="register_save.php" method="post">
                             <div class="row">
-                                <label class="col-lg-3 col-form-label">ชื่อบัญชี</label>
+                                <label class="col-lg-3 col-form-label">ชื่อบัญชี:</label>
                                 <div class="col-lg-9">
                                     <input type="text" name="login" class="form-control" required>
                                 </div>
                             </div>
                             <div class="row mt-3">
-                                <label class="col-lg-3 col-form-label">รหัสผ่าน</label>
+                                <label class="col-lg-3 col-form-label">รหัสผ่าน:</label>
                                 <div class="col-lg-9">
-                                    <input type="password" name="password" class="form-control" required>
+                                    <input type="password" name="password" id="pwd" class="form-control" required>
                                 </div>
                             </div>
                             <div class="row mt-3">
-                                <label class="col-lg-3 col-form-label">ชื่อ-นามสกุล</label>
+                                <label class="col-lg-3 col-form-label">ใส่รหัสผ่านซ้ำ:</label>
+                                <div class="col-lg-9">
+                                    <input type="password" name="password2" id="pwd2" onblur="OnBlurPwd()" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="row mt-3">
+                                <label class="col-lg-3 col-form-label">ชื่อ-นามสกุล:</label>
                                 <div class="col-lg-9">
                                     <input type="text" name="name" class="form-control" required>
                                 </div>
